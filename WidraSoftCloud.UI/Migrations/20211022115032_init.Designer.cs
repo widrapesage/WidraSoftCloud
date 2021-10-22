@@ -10,8 +10,8 @@ using WidraSoftCloud.UI.Data;
 namespace WidraSoftCloud.UI.Migrations
 {
     [DbContext(typeof(WidraSoftCloudUIContext))]
-    [Migration("20211020103335_initial")]
-    partial class initial
+    [Migration("20211022115032_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -128,17 +128,17 @@ namespace WidraSoftCloud.UI.Migrations
                     b.Property<int>("PoidsTotalMaxAut")
                         .HasColumnType("int");
 
-                    b.Property<int>("Rang1")
-                        .HasColumnType("int");
+                    b.Property<string>("Rang1")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Rang2")
-                        .HasColumnType("int");
+                    b.Property<string>("Rang2")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Rang3")
-                        .HasColumnType("int");
+                    b.Property<string>("Rang3")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Rang4")
-                        .HasColumnType("int");
+                    b.Property<string>("Rang4")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UniqueKey")
                         .HasColumnType("nvarchar(max)");

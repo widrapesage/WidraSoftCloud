@@ -126,17 +126,17 @@ namespace WidraSoftCloud.UI.Migrations
                     b.Property<int>("PoidsTotalMaxAut")
                         .HasColumnType("int");
 
-                    b.Property<int>("Rang1")
-                        .HasColumnType("int");
+                    b.Property<string>("Rang1")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Rang2")
-                        .HasColumnType("int");
+                    b.Property<string>("Rang2")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Rang3")
-                        .HasColumnType("int");
+                    b.Property<string>("Rang3")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Rang4")
-                        .HasColumnType("int");
+                    b.Property<string>("Rang4")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UniqueKey")
                         .HasColumnType("nvarchar(max)");

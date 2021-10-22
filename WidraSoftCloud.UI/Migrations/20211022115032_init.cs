@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WidraSoftCloud.UI.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,13 +50,13 @@ namespace WidraSoftCloud.UI.Migrations
                     UniqueKey = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategorieCam = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PoidsTotalMaxAut = table.Column<int>(type: "int", nullable: false),
-                    Rang1 = table.Column<int>(type: "int", nullable: false),
+                    Rang1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Poids1 = table.Column<int>(type: "int", nullable: false),
-                    Rang2 = table.Column<int>(type: "int", nullable: false),
+                    Rang2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Poids2 = table.Column<int>(type: "int", nullable: false),
-                    Rang3 = table.Column<int>(type: "int", nullable: false),
+                    Rang3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Poids3 = table.Column<int>(type: "int", nullable: false),
-                    Rang4 = table.Column<int>(type: "int", nullable: false),
+                    Rang4 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Poids4 = table.Column<int>(type: "int", nullable: false),
                     DateSynchronisation = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
