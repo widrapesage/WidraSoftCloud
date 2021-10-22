@@ -1,0 +1,122 @@
+﻿@page
+@model WidraSoftCloud.UI.Pages.Pesages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Pesage</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.LibelleCamion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.LibelleCamion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.Flux)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.Flux)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.LibelleTransporteur)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.LibelleTransporteur)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.LibelleProduit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.LibelleProduit)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.LibelleDestination)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.LibelleDestination)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.LibelleClient)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.LibelleClient)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.CategorieCam)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.CategorieCam)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.Observations)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.Observations)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.DateArrivee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.DateArrivee)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.PoidsNet)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.PoidsNet)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.AgentPesee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.AgentPesee)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.LibelleProvenance)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.LibelleProvenance)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pesage.DateSynchronisation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesage.DateSynchronisation)
+        </dd>
+    </dl>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayFor(model => model.Pesagecontrole.Rang1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesagecontrole.Poids1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayFor(model => model.Pesagecontrole.Rang2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesagecontrole.Poids2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayFor(model => model.Pesagecontrole.Rang3)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pesagecontrole.Poids3)
+        </dd>
+
+    </dl>
+
+</div>
+<div>
+  
+    <a style="color: #0bb963" asp-page="./Index">Retour à la liste</a>
+</div>

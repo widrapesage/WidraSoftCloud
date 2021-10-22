@@ -1,0 +1,55 @@
+﻿@page "{id:int}"
+@model WidraSoftCloud.UI.Pages.Utilisateurs.EditModel
+
+@{
+    ViewData["Title"] = "Modifier";
+}
+
+<h3>Modifier</h3>
+
+<h4>Utilisateur</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Utilisateur.Id" />
+            <div class="form-group">
+                <label asp-for="Utilisateur.Nom" class="control-label"></label>
+                <input asp-for="Utilisateur.Nom" class="form-control" />
+                <span asp-validation-for="Utilisateur.Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Utilisateur.Prenom" class="control-label"></label>
+                <input asp-for="Utilisateur.Prenom" class="form-control" />
+                <span asp-validation-for="Utilisateur.Prenom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Utilisateur.DateEntree" class="control-label"></label>
+                <input asp-for="Utilisateur.DateEntree" class="form-control" />
+                <span asp-validation-for="Utilisateur.DateEntree" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Utilisateur.Login" class="control-label"></label>
+                <input asp-for="Utilisateur.Login" class="form-control" />
+                <span asp-validation-for="Utilisateur.Login" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Utilisateur.Password" class="control-label"></label>
+                <input asp-for="Utilisateur.Password" class="form-control" />
+                <span asp-validation-for="Utilisateur.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input style="background-color: #0bb963" type="submit" value="Enregistrer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a style="color: #0bb963" asp-page="./Index">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

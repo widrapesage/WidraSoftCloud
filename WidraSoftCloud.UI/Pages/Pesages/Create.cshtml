@@ -1,0 +1,139 @@
+﻿@page
+@model WidraSoftCloud.UI.Pages.Pesages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Pesage</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pesage.Id" class="control-label"></label>
+                <input asp-for="Pesage.Id" class="form-control" />
+                <span asp-validation-for="Pesage.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.PontId" class="control-label"></label>
+                <input asp-for="Pesage.PontId" class="form-control" />
+                <span asp-validation-for="Pesage.PontId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.LibellePont" class="control-label"></label>
+                <input asp-for="Pesage.LibellePont" class="form-control" />
+                <span asp-validation-for="Pesage.LibellePont" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.CamionId" class="control-label"></label>
+                <input asp-for="Pesage.CamionId" class="form-control" />
+                <span asp-validation-for="Pesage.CamionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.LibelleCamion" class="control-label"></label>
+                <input asp-for="Pesage.LibelleCamion" class="form-control" />
+                <span asp-validation-for="Pesage.LibelleCamion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.Flux" class="control-label"></label>
+                <input asp-for="Pesage.Flux" class="form-control" />
+                <span asp-validation-for="Pesage.Flux" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.TransporteurId" class="control-label"></label>
+                <input asp-for="Pesage.TransporteurId" class="form-control" />
+                <span asp-validation-for="Pesage.TransporteurId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.LibelleTransporteur" class="control-label"></label>
+                <input asp-for="Pesage.LibelleTransporteur" class="form-control" />
+                <span asp-validation-for="Pesage.LibelleTransporteur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.ProduitId" class="control-label"></label>
+                <input asp-for="Pesage.ProduitId" class="form-control" />
+                <span asp-validation-for="Pesage.ProduitId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.LibelleProduit" class="control-label"></label>
+                <input asp-for="Pesage.LibelleProduit" class="form-control" />
+                <span asp-validation-for="Pesage.LibelleProduit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.DestiprovenId" class="control-label"></label>
+                <input asp-for="Pesage.DestiprovenId" class="form-control" />
+                <span asp-validation-for="Pesage.DestiprovenId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.LibelleDestination" class="control-label"></label>
+                <input asp-for="Pesage.LibelleDestination" class="form-control" />
+                <span asp-validation-for="Pesage.LibelleDestination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.ClientFourniId" class="control-label"></label>
+                <input asp-for="Pesage.ClientFourniId" class="form-control" />
+                <span asp-validation-for="Pesage.ClientFourniId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.LibelleClient" class="control-label"></label>
+                <input asp-for="Pesage.LibelleClient" class="form-control" />
+                <span asp-validation-for="Pesage.LibelleClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.CategorieCam" class="control-label"></label>
+                <input asp-for="Pesage.CategorieCam" class="form-control" />
+                <span asp-validation-for="Pesage.CategorieCam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.Observations" class="control-label"></label>
+                <input asp-for="Pesage.Observations" class="form-control" />
+                <span asp-validation-for="Pesage.Observations" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.DateArrivee" class="control-label"></label>
+                <input asp-for="Pesage.DateArrivee" class="form-control" />
+                <span asp-validation-for="Pesage.DateArrivee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.PoidsNet" class="control-label"></label>
+                <input asp-for="Pesage.PoidsNet" class="form-control" />
+                <span asp-validation-for="Pesage.PoidsNet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.AgentPesee" class="control-label"></label>
+                <input asp-for="Pesage.AgentPesee" class="form-control" />
+                <span asp-validation-for="Pesage.AgentPesee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.ProvenanceId" class="control-label"></label>
+                <input asp-for="Pesage.ProvenanceId" class="form-control" />
+                <span asp-validation-for="Pesage.ProvenanceId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.LibelleProvenance" class="control-label"></label>
+                <input asp-for="Pesage.LibelleProvenance" class="form-control" />
+                <span asp-validation-for="Pesage.LibelleProvenance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesage.DateSynchronisation" class="control-label"></label>
+                <input asp-for="Pesage.DateSynchronisation" class="form-control" />
+                <span asp-validation-for="Pesage.DateSynchronisation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

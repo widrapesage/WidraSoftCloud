@@ -1,0 +1,73 @@
+﻿@page "{SearchStringLogin?}"
+@model WidraSoftCloud.UI.Pages.Utilisateurs.IndexModel
+
+@{
+    ViewData["Title"] = "Utilisateurs";
+}
+
+
+<h1 >Utilisateurs</h1>
+ 
+<p>
+    <a style="color:#0bb963;" asp-page="Create">Ajouter</a>
+</p>
+
+<form>
+    <p>
+        Login: <input type="text" asp-for="SearchStringLogin" />
+
+        Nom:   <select asp-for="UtilisateurNom" asp-items="Model.Noms">
+            <option value="">Tout</option>
+        </select>
+        Prenom:<select asp-for="UtilisateurPrenom" asp-items="Model.Prenoms">
+            <option value="">Tout</option>
+        </select>
+
+        <input style="background-color:#0bb963;color:white;border-radius:3px 4px;" type="submit" value="Rechercher" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Utilisateur[0].Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Utilisateur[0].Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Utilisateur[0].DateEntree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Utilisateur[0].Login)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Utilisateur) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEntree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+
+            <td>
+                <a style="color:#0bb963" asp-page="./Edit" asp-route-id="@item.Id">Modifier</a> |
+                <a style="color:#0bb963" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a style="color:#0bb963" asp-page="./Delete" asp-route-id="@item.Id">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

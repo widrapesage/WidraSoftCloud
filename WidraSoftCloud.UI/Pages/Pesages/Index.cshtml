@@ -1,0 +1,92 @@
+﻿@page
+@model WidraSoftCloud.UI.Pages.Pesages.IndexModel
+
+@{
+    ViewData["Title"] = "Pesages";
+}
+
+<h1>Pesages</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].LibellePont)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].LibelleCamion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].LibelleTransporteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].LibelleProduit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].LibelleDestination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].LibelleClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].CategorieCam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].DateArrivee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].LibelleProvenance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].DateSynchronisation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Pesage) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibellePont)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibelleCamion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibelleTransporteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibelleProduit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibelleDestination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibelleClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategorieCam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateArrivee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibelleProvenance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateSynchronisation)
+            </td>
+            <td style="color:#0bb963;">
+                <a style="color:#0bb963" asp-page="./Details" asp-route-id="@item.UniqueKey">Details</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
