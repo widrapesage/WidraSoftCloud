@@ -52,10 +52,8 @@ namespace WidraSoftCloud.UI
                     return RedirectToPage("./Home");
                 }
                 else
-                {
-                   
-                    return Page();
-                    
+                {                  
+                    return Page();                    
                 }
             }
             else
