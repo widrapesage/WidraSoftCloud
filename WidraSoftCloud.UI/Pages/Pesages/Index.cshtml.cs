@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WidraSoftCloud.UI.Data;
 using WidraSoftCloud.UI.Models;
@@ -19,11 +20,131 @@ namespace WidraSoftCloud.UI.Pages.Pesages
             _context = context;
         }
 
+
         public IList<Pesage> Pesage { get;set; }
 
-        public async Task OnGetAsync()
+        public SelectList Ids { get; set; }
+        public SelectList Ponts { get; set; }
+        public SelectList Camions { get; set; }
+        public SelectList Transporteurs { get; set; }
+        public SelectList Produits { get; set; }
+        public SelectList Destinations { get; set; }
+        public SelectList Clients { get; set; }
+        public SelectList Categories { get; set; }
+        public SelectList Provenances { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int Id { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Pont { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Camion { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Transporteur { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Produit { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Destination { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Client { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Categorie { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Provenance { get; set; }
+        public async Task<IActionResult> OnGetAsync()
         {
-            Pesage = await _context.Pesage.ToListAsync();
+            IQueryable<int> IdsQuery = from p in _context.Pesage
+                                          orderby p.Id
+                                          select p.Id;
+            IQueryable<string> PontsQuery = from p in _context.Pesage
+                                            orderby p.LibellePont
+                                            select p.LibellePont;
+            IQueryable<string> CamionsQuery = from p in _context.Pesage
+                                              orderby p.LibelleCamion
+                                              select p.LibelleCamion;
+            IQueryable<string> TransporteursQuery = from p in _context.Pesage
+                                                    orderby p.LibelleTransporteur
+                                                    select p.LibelleTransporteur;
+            IQueryable<string> ProduitsQuery = from p in _context.Pesage
+                                               orderby p.LibelleProduit
+                                               select p.LibelleProduit;
+            IQueryable<string> DestinationsQuery = from p in _context.Pesage
+                                                   orderby p.LibelleDestination
+                                                   select p.LibelleDestination;
+            IQueryable<string> ClientsQuery = from p in _context.Pesage
+                                              orderby p.LibelleClient
+                                              select p.LibelleClient;
+            IQueryable<string> CategoriesQuery = from p in _context.Pesage
+                                                 orderby p.CategorieCam
+                                                 select p.CategorieCam;
+            IQueryable<string> ProvenancesQuery = from p in _context.Pesage
+                                                  orderby p.LibelleProvenance
+                                                  select p.LibelleProvenance;
+
+            var pesages = from p in _context.Pesage
+                          select p;
+
+            if (Request.Cookies["UsernameCookie"] == null)
+            {
+                return RedirectToPage("/Password");
+            }
+
+            if (Id > 0)
+            {
+                pesages = pesages.Where(p => p.Id == Id);
+            }
+
+            if (!string.IsNullOrEmpty(Pont))
+            {
+                pesages = pesages.Where(p => p.LibellePont == Pont);
+            }
+
+            if (!string.IsNullOrEmpty(Camion))
+            {
+                pesages = pesages.Where(p => p.LibelleCamion == Camion);
+            }
+
+            if (!string.IsNullOrEmpty(Transporteur))
+            {
+                pesages = pesages.Where(p => p.LibelleTransporteur == Transporteur);
+            }
+
+            if (!string.IsNullOrEmpty(Produit))
+            {
+                pesages = pesages.Where(p => p.LibelleProduit == Produit);
+            }
+
+            if (!string.IsNullOrEmpty(Destination))
+            {
+                pesages = pesages.Where(p => p.LibelleDestination == Destination);
+            }
+
+            if (!string.IsNullOrEmpty(Client))
+            {
+                pesages = pesages.Where(p => p.LibelleClient == Client);
+            }
+
+            if (!string.IsNullOrEmpty(Categorie))
+            {
+                pesages = pesages.Where(p => p.CategorieCam == Categorie);
+            }
+
+            if (!string.IsNullOrEmpty(Provenance))
+            {
+                pesages = pesages.Where(p => p.LibelleProvenance == Provenance);
+            }
+
+
+            Ids = new SelectList(await IdsQuery.Distinct().ToListAsync());
+            Ponts = new SelectList(await PontsQuery.Distinct().ToListAsync());
+            Camions = new SelectList(await CamionsQuery.Distinct().ToListAsync());
+            Transporteurs = new SelectList(await TransporteursQuery.Distinct().ToListAsync());
+            Produits = new SelectList(await ProduitsQuery.Distinct().ToListAsync());
+            Destinations = new SelectList(await DestinationsQuery.Distinct().ToListAsync());
+            Clients = new SelectList(await ClientsQuery.Distinct().ToListAsync());
+            Categories = new SelectList(await CategoriesQuery.Distinct().ToListAsync());
+            Provenances = new SelectList(await ProvenancesQuery.Distinct().ToListAsync());
+            Pesage = await pesages.ToListAsync();
+            return @Page();
         }
     }
 }

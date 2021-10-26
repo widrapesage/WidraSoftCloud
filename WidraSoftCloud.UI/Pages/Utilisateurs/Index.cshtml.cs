@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using WidraSoftCloud.UI.Data;
 using WidraSoftCloud.UI.Models;
 
+
 namespace WidraSoftCloud.UI.Pages.Utilisateurs
 {
     public class IndexModel : PageModel
@@ -33,8 +34,13 @@ namespace WidraSoftCloud.UI.Pages.Utilisateurs
 
 
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
+           if (Request.Cookies["UsernameCookie"]==null)
+            {
+                return RedirectToPage("/Password");
+            }
+
             IQueryable<string> NomQuery = from u in _context.Utilisateur
                                           orderby u.Nom
                                           select u.Nom;
@@ -60,9 +66,11 @@ namespace WidraSoftCloud.UI.Pages.Utilisateurs
                 utilisateurs = utilisateurs.Where(s => s.Prenom == UtilisateurPrenom);
 
             }
+
             Noms = new SelectList(await NomQuery.Distinct().ToListAsync());
             Prenoms = new SelectList(await PrenomQuery.Distinct().ToListAsync());
             Utilisateur = await utilisateurs.ToListAsync();
+            return @Page();
         }
     }
 }

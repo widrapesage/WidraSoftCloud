@@ -7,6 +7,45 @@
 
 <h1>Pesages</h1>
 
+<form>
+    <p>
+        Numéro: <select asp-for="Id" asp-items="Model.Ids">
+            <option value=0>Tout</option>
+        </select>
+        Pont: <select asp-for="Pont" asp-items="Model.Ponts">
+            <option value="">Tout</option>
+        </select>
+        Camion: <select asp-for="Camion" asp-items="Model.Camions">
+            <option value="">Tout</option>
+        </select>
+        Transporteur: <select asp-for="Transporteur" asp-items="Model.Transporteurs">
+            <option value="">Tout</option>
+        </select>
+
+        Produit: <select asp-for="Produit" asp-items="Model.Produits">
+            <option value="">Tout</option>
+        </select>
+
+        Destination: <select asp-for="Destination" asp-items="Model.Destinations">
+            <option value="">Tout</option>
+        </select>
+    </p>
+    <p>
+        Client:  <select asp-for="Client" asp-items="Model.Clients">
+            <option value="">Tout</option>
+        </select>
+
+        Categorie:  <select asp-for="Categorie" asp-items="Model.Categories">
+            <option value="">Tout</option>
+        </select>
+        Provenance:  <select asp-for="Provenance" asp-items="Model.Provenances">
+            <option value="">Tout</option>
+        </select>
+
+        <input style="background-color:#0bb963;color:white;border-radius:3px 4px;" type="submit" value="Rechercher" />
+    </p>
+
+</form>
 
 <table class="table">
     <thead>

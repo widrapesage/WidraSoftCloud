@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WidraSoftCloud.UI.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace WidraSoftCloud.UI
 {
@@ -31,6 +32,7 @@ namespace WidraSoftCloud.UI
 
             services.AddDbContext<WidraSoftCloudUIContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("WidraSoftCloudUIContext")));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
