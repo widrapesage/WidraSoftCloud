@@ -1,0 +1,53 @@
+﻿@page
+@model WidraSoftCloud.UI.Pages.LicenceModel
+@{
+    ViewData["Title"] = "Licence";
+    Layout = null;
+}
+
+<p style="text-align:center;"><img src="~/cloud-data.png" alt="Icon Image" style="margin-bottom:-15px;" /></p>
+<br />
+<body style="background-color:transparent;">
+    <div style="display: block; opacity:initial; background-color: white; width: 600px; height: auto; border: groove; border-color: #0bb963; border-radius: 5px 6px; box-shadow: 2px 1px inset; margin: auto; ">
+
+        <hr />
+        <hr />
+        <h3 style="text-align:center;font-family:Capriola;"> <img src="~/door-key.png" alt="Icon Image" style="padding-top:6px;" />&nbsp;&nbsp;Licence</h3>
+        <hr />
+        <hr />
+        <div>
+            <form method="post">
+                <p style="text-align:center; font-size:15px;">
+
+                    Type licence:  <input style="width:30px;background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align:center;" type="text" asp-for="Type" /> &nbsp;&nbsp;
+                    Date début: <input style="width: 100px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="DateDebut" /> &nbsp;&nbsp;
+                    Date fin: <input style="width: 100px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="DateFin" />
+                    <br /> <br />
+                    Code actuel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="width: 180px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 1px; text-align: center;" type="text" asp-for="CodeA" />
+                    &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="I1" pattern="\d{1}" />
+                    &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="I2" pattern="\d{1}" />
+                    &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="I3" pattern="\d{2}" />
+                    &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="I4" pattern="\d{1}" />
+                </p>
+                    @{ if (Model.CanUpdateLicence())
+                        {
+                            <p style="text-align:center; font-size:15px;">
+                                Nouveau code:&nbsp; &nbsp;<input style="width: 180px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 1px; text-align: center;" type="text" asp-for="NewCodeA" />
+                                &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="NewI1" pattern="\d{1}" />
+                                &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="NewI2" pattern="\d{1}" />
+                                &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="NewI3" pattern="\d{2}" />
+                                &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="NewI4" pattern="\d{1}" /><br /> <br />
+                                &nbsp;&nbsp;&nbsp;<input style="border-width: 1px; background-color: #0bb963; color: white; border-radius: 3px 4px; height:30px;" type="submit" value="Valider la nouvelle licence" name="bt_connecter" />
+                            </p>
+                            
+                        }
+                        
+                    }  
+            <p style="text-align:center; font-size:12px; color:red">@Model.UserMessage</p>
+                
+            </form>
+
+        </div>
+    </div>
+</body>
+<footer><p style="text-align: center; font-size: 18px;"> <a href="./Home" style="color: #0bb963"> Retour </a></p></footer>

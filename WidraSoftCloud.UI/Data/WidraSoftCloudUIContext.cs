@@ -17,6 +17,8 @@ namespace WidraSoftCloud.UI.Data
         public DbSet<WidraSoftCloud.UI.Models.Utilisateur> Utilisateur { get; set; }
         public DbSet<WidraSoftCloud.UI.Models.Pesage> Pesage { get; set; }
         public DbSet<WidraSoftCloud.UI.Models.PesageControle> PesageControle { get; set; }
+        public DbSet<WidraSoftCloud.UI.Models.Parametre> Parametre { get; set; }
+        public DbSet<WidraSoftCloud.UI.Models.L> L { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {

@@ -23,7 +23,8 @@ namespace WidraSoftCloud.UI
         public string UserPassword { get; set; }
         [BindProperty]
         public Utilisateur Utilisateur { get; set; }
-        public string Username {get;set;}
+        public bool IsPermissible {get;set;}
+        public string UserMessage { get; set; }
 
         public void GetUsername()
         {
@@ -49,16 +50,21 @@ namespace WidraSoftCloud.UI
                 if (utilisateurs.Any())
                 {
                     GetUsername();
+                    IsPermissible = true;
                     return RedirectToPage("./Home");
                 }
                 else
-                {                  
+                {
+                    IsPermissible = false;
+                    UserMessage = "Nom d'utilisateur ou mot de passe incorrects";
                     return Page();                    
                 }
             }
             else
             {
-                return Page();
+                IsPermissible = false;
+                UserMessage = "Informations incomplètes";
+                return Page();               
             }
         }
         

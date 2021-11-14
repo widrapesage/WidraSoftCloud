@@ -23,7 +23,9 @@ namespace WidraSoftCloud.UI
 
                 try
                 {
-                    SeedData.Initialize(services);
+                    SeedData.Initialize_Utilisateur(services);
+                    SeedData.Initialize_Parametre(services);
+                    SeedData.Initialize_L(services);
                 }
                 catch (Exception ex)
                 {

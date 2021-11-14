@@ -10,8 +10,8 @@ using WidraSoftCloud.UI.Data;
 namespace WidraSoftCloud.UI.Migrations
 {
     [DbContext(typeof(WidraSoftCloudUIContext))]
-    [Migration("20211026115153_init")]
-    partial class init
+    [Migration("20211109121145_licence")]
+    partial class licence
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,87 @@ namespace WidraSoftCloud.UI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("WidraSoftCloud.UI.Models.L", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CodeA")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Etat")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("I1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("I2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("I3")
+                        .HasColumnType("int");
+
+                    b.Property<int>("I4")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("L");
+                });
+
+            modelBuilder.Entity("WidraSoftCloud.UI.Models.Parametre", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Param1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Param2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Param3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Param4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Param5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Param6")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Param7")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Param8")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ParamInt1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ParamInt2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ParamInt3")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TypeParametre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Parametre");
+                });
 
             modelBuilder.Entity("WidraSoftCloud.UI.Models.Pesage", b =>
                 {
