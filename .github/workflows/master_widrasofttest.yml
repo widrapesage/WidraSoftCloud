@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'widrasofttest'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_36C7789FDBBE4EF6B11D6156AF1769A6 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8425DAC58BBF42CC8B7635801071E95D }}
           package: .
