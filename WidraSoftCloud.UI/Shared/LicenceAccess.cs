@@ -31,10 +31,11 @@ namespace WidraSoftCloud.UI.Shared
                 DateDebut = DateDebut + "/" + (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt3 / 100).ToString();
                 var L = from l in _context.L
                         select l;
+               //Uniquement pour le test mettre Now a la place de DateFin (problème de date azure sql database)
                 if (L.FirstOrDefault().Type == "D")
-                    DateFin = Convert.ToDateTime(DateDebut).Date.AddDays(7);
+                    DateFin = DateTime.Now.Date.AddDays(7);
                 else
-                    DateFin = Convert.ToDateTime(DateDebut).Date.AddYears(1);
+                    DateFin = DateTime.Now.Date.AddYears(1);
                 DaysLeft =( DateFin - Convert.ToDateTime(DateDebut).Date).Days;
                 
 
