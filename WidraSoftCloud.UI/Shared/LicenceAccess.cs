@@ -36,7 +36,7 @@ namespace WidraSoftCloud.UI.Shared
                     DateFin = DateTime.Now.Date.AddDays(7);
                 else
                     DateFin = DateTime.Now.Date.AddYears(1);
-                DaysLeft =( DateFin - Convert.ToDateTime(DateDebut).Date).Days;
+                DaysLeft =( DateFin - DateTime.Now.Date).Days;
                 
 
                 if (DateFin <= DateTime.Now.Date)
