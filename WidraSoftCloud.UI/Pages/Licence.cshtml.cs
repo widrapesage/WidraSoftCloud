@@ -51,6 +51,7 @@ namespace WidraSoftCloud.UI.Pages
 
         public DateTime GetDateDebut()
         {
+            //Pour les besoins de test uniquement DateTime Azure
             try
             {
                 var P = from p in _context.Parametre
@@ -60,7 +61,7 @@ namespace WidraSoftCloud.UI.Pages
                 DateDebut = DateDebut + "/" + (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt2 / 10).ToString();
                 DateDebut = DateDebut + "/" + (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt3 / 100).ToString();
 
-                return Convert.ToDateTime(DateDebut).Date;
+                return DateTime.Now.Date;
 
             }
             catch
