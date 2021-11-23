@@ -26,8 +26,8 @@ namespace WidraSoftCloud.UI.Shared
                 var P = from p in _context.Parametre
                         select p;
                 string DateDebut;
-                DateDebut = (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt1 / 10).ToString();
-                DateDebut = DateDebut + "/" + (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt2 / 10).ToString();
+                DateDebut = (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt2 / 10).ToString();
+                DateDebut = DateDebut + "/" + (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt1 / 10).ToString();
                 DateDebut = DateDebut + "/" + (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt3 / 100).ToString();
                 var L = from l in _context.L
                         select l;

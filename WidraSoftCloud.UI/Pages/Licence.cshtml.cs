@@ -56,8 +56,8 @@ namespace WidraSoftCloud.UI.Pages
                 var P = from p in _context.Parametre
                         select p;
                 string DateDebut;
-                DateDebut = (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt1 / 10).ToString();
-                DateDebut = DateDebut + "/" + (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt2 / 10).ToString();
+                DateDebut = (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt2 / 10).ToString();
+                DateDebut = DateDebut + "/" + (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt1 / 10).ToString();
                 DateDebut = DateDebut + "/" + (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt3 / 100).ToString();
 
                 return Convert.ToDateTime(DateDebut).Date;
