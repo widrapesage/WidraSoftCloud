@@ -34,10 +34,10 @@ namespace WidraSoftCloud.UI.Pages
         public int NewCodeA { get; set; }
         [DataType(DataType.Date)]
         [BindProperty(SupportsGet = true)]
-        public DateTime DateDebut { get; set;}
+        public String DateDebut { get; set;}
         [DataType(DataType.Date)]
         [BindProperty(SupportsGet = true)]
-        public DateTime DateFin { get; set; }
+        public String DateFin { get; set; }
         [BindProperty(SupportsGet = true)]
         public int NewI1 { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -118,8 +118,8 @@ namespace WidraSoftCloud.UI.Pages
                 I3 = L.FirstOrDefault().I3;
                 I4 = L.FirstOrDefault().I4;
                 Type = L.FirstOrDefault().Type;
-                DateDebut = GetDateDebut();
-                DateFin = GetDateFin(Type);
+                DateDebut = GetDateDebut().ToString("dd/mm/yyyy");
+                DateFin = GetDateFin(Type).ToString("dd/mm/yyyy");
             }
             catch
             {
@@ -149,8 +149,8 @@ namespace WidraSoftCloud.UI.Pages
                     var P = from p in _context.Parametre
                             select p;
                     P = P.Where(e => e.TypeParametre == "VERSION");
-                    P.FirstOrDefault().ParamInt1 = DateTime.Now.Date.Day * 10;
-                    P.FirstOrDefault().ParamInt2 = DateTime.Now.Date.Month * 10;
+                    P.FirstOrDefault().ParamInt2 = DateTime.Now.Date.Day * 10;
+                    P.FirstOrDefault().ParamInt1 = DateTime.Now.Date.Month * 10;
                     P.FirstOrDefault().ParamInt3 = DateTime.Now.Date.Year * 100;
 
                     _context.SaveChanges();
