@@ -14,6 +14,7 @@ namespace WidraSoftCloud.UI.Models
         public string Prenom { get; set; }
         [Display(Name = "Date d'inscription")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DateEntree { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
