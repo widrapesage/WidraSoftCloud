@@ -118,8 +118,8 @@ namespace WidraSoftCloud.UI.Pages
                 I3 = L.FirstOrDefault().I3;
                 I4 = L.FirstOrDefault().I4;
                 Type = L.FirstOrDefault().Type;
-                DateDebut = GetDateDebut().ToString("dd/m/yyyy");
-                DateFin = GetDateFin(Type).ToString("dd/m/yyyy");
+                DateDebut = GetDateDebut().ToString("dd/MM/yyyy");
+                DateFin = GetDateFin(Type).ToString("dd/MM/yyyy");
             }
             catch
             {
