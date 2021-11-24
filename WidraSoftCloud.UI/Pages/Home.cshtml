@@ -8,8 +8,17 @@
     <h1 class="display-4">Port Autonome de Côte d'Ivoire</h1>
     <p> <a style="color: #0bb963" href="https://widra.com">Découvrez nos solutions informatiques pour toutes plateformes de pesage.</a></p>
     @{ if (!string.IsNullOrEmpty(Model.UserMessage))
+        {
+            if (Model.CanUpdateLicence)
             {
                 <p style="color: #0bb963"> @Model.UserMessage</p>
             }
+            else
+            {
+                <p style="color: #0bb963"> @Model.UserMessage </p> 
+                <a href="./Licence" style="color: #0bb963"> Réactiver licence</a>
+            }
+
+        }
     }
 </div>

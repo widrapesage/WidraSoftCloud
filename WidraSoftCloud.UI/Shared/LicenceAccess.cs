@@ -48,6 +48,36 @@ namespace WidraSoftCloud.UI.Shared
             }
         }
 
-  
+        public Boolean CanUpdateLicence()
+        {
+            try
+            {
+                DateTime DateFin;
+                var P = from p in _context.Parametre
+                        select p;
+                string DateDebut;
+                DateDebut = (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt2 / 10).ToString();
+                DateDebut = DateDebut + "/" + (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt1 / 10).ToString();
+                DateDebut = DateDebut + "/" + (P.FirstOrDefault(e => e.TypeParametre == "VERSION").ParamInt3 / 100).ToString();
+                var L = from l in _context.L
+                        select l;
+                if (L.FirstOrDefault().Type == "D")
+                    DateFin = Convert.ToDateTime(DateDebut).Date.AddDays(7);
+                else
+                    DateFin = Convert.ToDateTime(DateDebut).Date.AddYears(1);
+
+                if (DateFin <= DateTime.Now.AddDays(6))
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                throw;
+            }
+
+        }
+
+
     }
 }

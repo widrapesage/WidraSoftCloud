@@ -29,25 +29,30 @@
                     &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="I3" pattern="\d{2}" />
                     &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="I4" pattern="\d{1}" />
                 </p>
-                    @{ if (Model.CanUpdateLicence())
-                        {
-                            <p style="text-align:center; font-size:15px;">
-                                Nouveau code:&nbsp; &nbsp;<input style="width: 180px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 1px; text-align: center;" type="text" asp-for="NewCodeA" />
-                                &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="NewI1" pattern="\d{1}" />
-                                &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="NewI2" pattern="\d{1}" />
-                                &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="NewI3" pattern="\d{2}" />
-                                &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="NewI4" pattern="\d{1}" /><br /> <br />
-                                &nbsp;&nbsp;&nbsp;<input style="border-width: 1px; background-color: #0bb963; color: white; border-radius: 3px 4px; height:30px;" type="submit" value="Valider la nouvelle licence" name="bt_connecter" />
-                            </p>
-                            
-                        }
-                        
-                    }  
-            <p style="text-align:center; font-size:13px; color:red">@Model.UserMessage</p>
-                
+                @{ if (Model.CanUpdateLicence())
+                    {
+                        <p style="text-align:center; font-size:15px;">
+                            Nouveau code:&nbsp; &nbsp;<input style="width: 180px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 1px; text-align: center;" type="text" asp-for="NewCodeA" />
+                            &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="NewI1" pattern="\d{1}" />
+                            &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="NewI2" pattern="\d{1}" />
+                            &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="NewI3" pattern="\d{2}" />
+                            &nbsp;<input style="width: 30px; background-color: mintcream; border-width: 1px; border-color: #0bb963; border-radius: 1px 2px; text-align: center;" type="text" asp-for="NewI4" pattern="\d{1}" /><br /> <br />
+                            &nbsp;&nbsp;&nbsp;<input style="border-width: 1px; background-color: #0bb963; color: white; border-radius: 3px 4px; height:30px;" type="submit" value="Valider la nouvelle licence" name="bt_connecter" />
+                        </p>
+
+                    }
+
+                }
+                <p style="text-align:center; font-size:13px; color:red">@Model.UserMessage</p>
+
             </form>
 
         </div>
     </div>
 </body>
-<footer><p style="text-align: center; font-size: 17px;"> <a href="./Home" style="color: #0bb963"> Retour </a></p></footer>
+@{ if (Model.CanUpdateLicence())
+    {
+        <footer><p style="text-align: center; font-size: 17px;"> <a href="./Home" style="color: #0bb963"> Retour </a></p></footer>
+    }
+
+}

@@ -19,6 +19,7 @@ namespace WidraSoftCloud.UI.Pages
         private IConfiguration Configuration;
 
         public string UserMessage { get; set; } 
+        public bool CanUpdateLicence { get; set; } 
 
         public IndexModel(ILogger<IndexModel> logger, IConfiguration configuration)
         {
@@ -26,19 +27,27 @@ namespace WidraSoftCloud.UI.Pages
             Configuration = configuration;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
             var contextOptions = new DbContextOptionsBuilder<WidraSoftCloudUIContext>()
                 .UseSqlServer(Configuration.GetConnectionString("WidraSoftCloudUIContext")).Options;
             var context = new WidraSoftCloudUIContext(contextOptions);
             LicenceAccess licenceAccess = new LicenceAccess(context);
+
+            if (licenceAccess.CanUpdateLicence())
+                CanUpdateLicence = true;
+            else
+                CanUpdateLicence = false;
+
             if (licenceAccess.IsAuhtorized())
             {
                 UserMessage = "Il vous reste " + licenceAccess.DaysLeft.ToString() + " jour(s) avant la fin de votre licence.";
+                return Page();
             }
             else
             {
                 UserMessage = "Licence expirée.";
+                return RedirectToPage("./Licence");                               
             }
 
         }
