@@ -51,6 +51,12 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].SyncId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].UniqueKey)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Pesage[0].Id)
             </th>
             <th>
@@ -89,6 +95,12 @@
     <tbody>
 @foreach (var item in Model.Pesage) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SyncId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UniqueKey)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
             </td>

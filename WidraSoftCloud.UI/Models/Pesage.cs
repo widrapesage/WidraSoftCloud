@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 namespace WidraSoftCloud.UI.Models
 {
     public class Pesage
-    {   
+    {
+        [Display(Name = "SYNC_ID")]
         public int Id { get; set; }
         public string SyncId { get; set; }
+        [Display(Name = "KEY")]
         public string UniqueKey { get; set; }
         public int PontId { get; set; }
         [Display(Name = "Pont")]
@@ -45,7 +47,6 @@ namespace WidraSoftCloud.UI.Models
         [Display(Name = "Provenance")]
         public string LibelleProvenance { get; set; }
         [Display(Name = "Date synchronisation")]
-        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DateSynchronisation { get; set; }
 

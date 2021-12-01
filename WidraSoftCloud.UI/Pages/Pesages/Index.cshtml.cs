@@ -22,7 +22,7 @@ namespace WidraSoftCloud.UI.Pages.Pesages
 
 
         public IList<Pesage> Pesage { get;set; }
-
+        
         public SelectList Ids { get; set; }
         public SelectList Ponts { get; set; }
         public SelectList Camions { get; set; }
@@ -33,7 +33,7 @@ namespace WidraSoftCloud.UI.Pages.Pesages
         public SelectList Categories { get; set; }
         public SelectList Provenances { get; set; }
         [BindProperty(SupportsGet = true)]
-        public int Id { get; set; }
+        public String Id { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Pont { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -53,7 +53,7 @@ namespace WidraSoftCloud.UI.Pages.Pesages
         public async Task<IActionResult> OnGetAsync()
         {
             IQueryable<int> IdsQuery = from p in _context.Pesage
-                                          orderby p.Id
+                                       orderby p.UniqueKey
                                           select p.Id;
             IQueryable<string> PontsQuery = from p in _context.Pesage
                                             orderby p.LibellePont
@@ -88,9 +88,9 @@ namespace WidraSoftCloud.UI.Pages.Pesages
                 return RedirectToPage("/Password");
             }
 
-            if (Id > 0)
+            if (!string.IsNullOrEmpty(Id))
             {
-                pesages = pesages.Where(p => p.Id == Id);
+                pesages = pesages.Where(p => p.UniqueKey == Id);
             }
 
             if (!string.IsNullOrEmpty(Pont))
