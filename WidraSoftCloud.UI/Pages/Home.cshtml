@@ -9,7 +9,7 @@
     <p> <a style="color: #0bb963" href="https://widra.com">Découvrez nos solutions informatiques pour toutes plateformes de pesage.</a></p>
     @{ if (!string.IsNullOrEmpty(Model.UserMessage))
         {
-            if (Model.CanUpdateLicence)
+            if (!Model.CanUpdateLicence)
             {
                 <p style="color: #0bb963"> @Model.UserMessage</p>
             }
