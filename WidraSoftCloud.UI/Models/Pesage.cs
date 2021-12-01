@@ -34,6 +34,8 @@ namespace WidraSoftCloud.UI.Models
         public string CategorieCam { get; set; }
         public string Observations { get; set; }
         [Display(Name = "Date d'arrivée")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DateArrivee { get; set; }
         [Display(Name = "Poids Total (Kg)")]
         public int PoidsNet { get; set; }
@@ -43,6 +45,8 @@ namespace WidraSoftCloud.UI.Models
         [Display(Name = "Provenance")]
         public string LibelleProvenance { get; set; }
         [Display(Name = "Date synchronisation")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DateSynchronisation { get; set; }
 
         }
