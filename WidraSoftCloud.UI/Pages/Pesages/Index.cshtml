@@ -10,7 +10,7 @@
 <form>
     <p>
         Numéro: <select asp-for="Id" asp-items="Model.Ids">
-            <option value=0>Tout</option>
+            <option value="">Tout</option>
         </select>
         Pont: <select asp-for="Pont" asp-items="Model.Ponts">
             <option value="">Tout</option>
@@ -65,9 +65,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Pesage[0].LibelleCamion)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pesage[0].LibelleTransporteur)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Pesage[0].LibelleProduit)
             </th>
@@ -106,9 +104,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.LibelleCamion)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LibelleTransporteur)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.LibelleProduit)
             </td>
@@ -127,7 +123,7 @@
                 @Html.DisplayFor(modelItem => item.DateSynchronisation)
             </td>
             <td style="color:#0bb963;">
-                <a style="color:#0bb963" asp-page="./Details" asp-route-id="@item.UniqueKey">Details</a> |
+                <a style="color:#0bb963" asp-page="./Details" asp-route-id="@item.UniqueKey">Details</a>
             </td>
         </tr>
 }

@@ -8,8 +8,9 @@ namespace WidraSoftCloud.UI.Models
 {
     public class Pesage
     {
-        [Display(Name = "SYNC_ID")]
+        
         public int Id { get; set; }
+        [Display(Name = "SYNC_ID")]
         public string SyncId { get; set; }
         [Display(Name = "KEY")]
         public string UniqueKey { get; set; }

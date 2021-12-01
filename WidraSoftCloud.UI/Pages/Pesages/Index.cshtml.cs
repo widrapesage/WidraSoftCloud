@@ -52,9 +52,9 @@ namespace WidraSoftCloud.UI.Pages.Pesages
         public string Provenance { get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
-            IQueryable<int> IdsQuery = from p in _context.Pesage
+            IQueryable<string> IdsQuery = from p in _context.Pesage
                                        orderby p.UniqueKey
-                                          select p.Id;
+                                          select p.UniqueKey;
             IQueryable<string> PontsQuery = from p in _context.Pesage
                                             orderby p.LibellePont
                                             select p.LibellePont;
