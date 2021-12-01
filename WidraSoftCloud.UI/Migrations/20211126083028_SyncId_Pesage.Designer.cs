@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WidraSoftCloud.UI.Data;
 
 namespace WidraSoftCloud.UI.Migrations
 {
     [DbContext(typeof(WidraSoftCloudUIContext))]
-    partial class WidraSoftCloudUIContextModelSnapshot : ModelSnapshot
+    [Migration("20211126083028_SyncId_Pesage")]
+    partial class SyncId_Pesage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -204,6 +206,9 @@ namespace WidraSoftCloud.UI.Migrations
                     b.Property<int>("Poids3")
                         .HasColumnType("int");
 
+                    b.Property<int>("Poids4")
+                        .HasColumnType("int");
+
                     b.Property<int>("PoidsTotalMaxAut")
                         .HasColumnType("int");
 
@@ -216,7 +221,7 @@ namespace WidraSoftCloud.UI.Migrations
                     b.Property<string>("Rang3")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SyncId")
+                    b.Property<string>("Rang4")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UniqueKey")

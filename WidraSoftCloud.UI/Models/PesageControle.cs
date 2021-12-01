@@ -10,6 +10,7 @@ namespace WidraSoftCloud.UI.Models
     {
         public int Id { get; set; }
         public int PesageId { get; set; }
+        public string SyncId { get; set; }
         public string UniqueKey { get; set; }
         public string CategorieCam { get; set; }
         public int PoidsTotalMaxAut { get; set; }
@@ -19,8 +20,7 @@ namespace WidraSoftCloud.UI.Models
         public int Poids2 { get; set; }
         public string Rang3 { get; set; }
         public int Poids3 { get; set; }
-        public string Rang4 { get; set; }
-        public int Poids4 { get; set; }
+
         [Display(Name = "Date synchronisation")]
         public DateTime DateSynchronisation { get; set; }
 

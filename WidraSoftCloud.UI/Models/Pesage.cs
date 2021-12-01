@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 namespace WidraSoftCloud.UI.Models
 {
     public class Pesage
-    {
+    {   
         public int Id { get; set; }
+        public string SyncId { get; set; }
         public string UniqueKey { get; set; }
         public int PontId { get; set; }
         [Display(Name = "Pont")]
