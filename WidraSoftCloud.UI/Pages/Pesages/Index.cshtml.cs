@@ -56,8 +56,8 @@ namespace WidraSoftCloud.UI.Pages.Pesages
                                        orderby p.UniqueKey
                                           select p.UniqueKey;
             IQueryable<string> PontsQuery = from p in _context.Pesage
-                                            orderby p.LibellePont
-                                            select p.LibellePont;
+                                            orderby p.SyncId
+                                            select p.SyncId;
             IQueryable<string> CamionsQuery = from p in _context.Pesage
                                               orderby p.LibelleCamion
                                               select p.LibelleCamion;
@@ -95,7 +95,7 @@ namespace WidraSoftCloud.UI.Pages.Pesages
 
             if (!string.IsNullOrEmpty(Pont))
             {
-                pesages = pesages.Where(p => p.LibellePont == Pont);
+               pesages = pesages.Where(p => p.SyncId == Pont);
             }
 
             if (!string.IsNullOrEmpty(Camion))
