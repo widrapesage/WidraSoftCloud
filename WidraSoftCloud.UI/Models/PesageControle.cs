@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WidraSoftCloud.UI.Models
 {
@@ -20,7 +17,12 @@ namespace WidraSoftCloud.UI.Models
         public int Poids2 { get; set; }
         public string Rang3 { get; set; }
         public int Poids3 { get; set; }
-
+        public int Max1 { get; set; }
+        public int Max2 { get; set; }
+        public int Max3 { get; set; }
+        public int Surcharge1 { get; set; }
+        public int Surcharge2 { get; set; }
+        public int Surcharge3 { get; set; }
         [Display(Name = "Date synchronisation")]
         public DateTime DateSynchronisation { get; set; }
 
