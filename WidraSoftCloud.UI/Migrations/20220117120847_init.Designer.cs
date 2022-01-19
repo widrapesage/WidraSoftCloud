@@ -10,8 +10,8 @@ using WidraSoftCloud.UI.Data;
 namespace WidraSoftCloud.UI.Migrations
 {
     [DbContext(typeof(WidraSoftCloudUIContext))]
-    [Migration("20211213131140_surchagesessieux")]
-    partial class surchagesessieux
+    [Migration("20220117120847_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

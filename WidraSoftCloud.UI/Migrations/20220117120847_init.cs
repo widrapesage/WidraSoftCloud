@@ -56,6 +56,7 @@ namespace WidraSoftCloud.UI.Migrations
                 {
                     UniqueKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Id = table.Column<int>(type: "int", nullable: false),
+                    SyncId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PontId = table.Column<int>(type: "int", nullable: false),
                     LibellePont = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CamionId = table.Column<int>(type: "int", nullable: false),
@@ -90,6 +91,7 @@ namespace WidraSoftCloud.UI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PesageId = table.Column<int>(type: "int", nullable: false),
+                    SyncId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UniqueKey = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategorieCam = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PoidsTotalMaxAut = table.Column<int>(type: "int", nullable: false),
@@ -99,8 +101,12 @@ namespace WidraSoftCloud.UI.Migrations
                     Poids2 = table.Column<int>(type: "int", nullable: false),
                     Rang3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Poids3 = table.Column<int>(type: "int", nullable: false),
-                    Rang4 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Poids4 = table.Column<int>(type: "int", nullable: false),
+                    Max1 = table.Column<int>(type: "int", nullable: false),
+                    Max2 = table.Column<int>(type: "int", nullable: false),
+                    Max3 = table.Column<int>(type: "int", nullable: false),
+                    Surcharge1 = table.Column<int>(type: "int", nullable: false),
+                    Surcharge2 = table.Column<int>(type: "int", nullable: false),
+                    Surcharge3 = table.Column<int>(type: "int", nullable: false),
                     DateSynchronisation = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

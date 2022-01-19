@@ -10,8 +10,8 @@ using WidraSoftCloud.UI.Data;
 namespace WidraSoftCloud.UI.Migrations
 {
     [DbContext(typeof(WidraSoftCloudUIContext))]
-    [Migration("20211123113721_dislay_date_utilisateurs")]
-    partial class dislay_date_utilisateurs
+    [Migration("20220117124458_4eme_groupe_essieu")]
+    partial class _4eme_groupe_essieu
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -170,6 +170,9 @@ namespace WidraSoftCloud.UI.Migrations
                     b.Property<int>("ProvenanceId")
                         .HasColumnType("int");
 
+                    b.Property<string>("SyncId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("TransporteurId")
                         .HasColumnType("int");
 
@@ -190,6 +193,18 @@ namespace WidraSoftCloud.UI.Migrations
 
                     b.Property<DateTime>("DateSynchronisation")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Max1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Max2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Max3")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Max4")
+                        .HasColumnType("int");
 
                     b.Property<int>("PesageId")
                         .HasColumnType("int");
@@ -219,6 +234,21 @@ namespace WidraSoftCloud.UI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rang4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Surcharge1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Surcharge2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Surcharge3")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Surcharge4")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SyncId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UniqueKey")

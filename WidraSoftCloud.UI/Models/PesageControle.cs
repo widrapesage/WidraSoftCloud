@@ -15,14 +15,18 @@ namespace WidraSoftCloud.UI.Models
         public int Poids1 { get; set; }
         public string Rang2 { get; set;}
         public int Poids2 { get; set; }
-        public string Rang3 { get; set; }
+        public string Rang3 { get; set; }      
         public int Poids3 { get; set; }
+        public string Rang4 { get; set; }
+        public int Poids4 { get; set; }
         public int Max1 { get; set; }
         public int Max2 { get; set; }
         public int Max3 { get; set; }
+        public int Max4 { get; set; }
         public int Surcharge1 { get; set; }
         public int Surcharge2 { get; set; }
         public int Surcharge3 { get; set; }
+        public int Surcharge4 { get; set; }
         [Display(Name = "Date synchronisation")]
         public DateTime DateSynchronisation { get; set; }
 

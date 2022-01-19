@@ -201,6 +201,9 @@ namespace WidraSoftCloud.UI.Migrations
                     b.Property<int>("Max3")
                         .HasColumnType("int");
 
+                    b.Property<int>("Max4")
+                        .HasColumnType("int");
+
                     b.Property<int>("PesageId")
                         .HasColumnType("int");
 
@@ -211,6 +214,9 @@ namespace WidraSoftCloud.UI.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Poids3")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Poids4")
                         .HasColumnType("int");
 
                     b.Property<int>("PoidsTotalMaxAut")
@@ -225,6 +231,9 @@ namespace WidraSoftCloud.UI.Migrations
                     b.Property<string>("Rang3")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Rang4")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Surcharge1")
                         .HasColumnType("int");
 
@@ -232,6 +241,9 @@ namespace WidraSoftCloud.UI.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Surcharge3")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Surcharge4")
                         .HasColumnType("int");
 
                     b.Property<string>("SyncId")
