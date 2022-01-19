@@ -31,7 +31,7 @@ namespace WidraSoftCloud.UI
             services.AddMvc().AddRazorPagesOptions(options => { options.Conventions.AddPageRoute("/Password",""); });
 
             services.AddDbContext<WidraSoftCloudUIContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("WidraSoftCloudUIContextTest")));
+                    options.UseSqlServer(Configuration.GetConnectionString("WidraSoftCloudUIContext")));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
