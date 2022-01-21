@@ -41,7 +41,7 @@ namespace WidraSoftCloud.UI.Pages
 
             if (licenceAccess.IsAuhtorized())
             {
-                UserMessage = "Il vous reste " + licenceAccess.DaysLeft.ToString() + " jour(s) avant la fin de votre licence.";
+               // UserMessage = "Il vous reste " + licenceAccess.DaysLeft.ToString() + " jour(s) avant la fin de votre licence.";
                 return Page();
             }
             else
