@@ -50,8 +50,8 @@ namespace WidraSoftCloud.UI.Models
                     context.Parametre.Add(new Parametre
                     {
                         TypeParametre = "VERSION",
-                        ParamInt1 = DateTime.Now.Date.Day * 10,
-                        ParamInt2 =  DateTime.Now.Date.Month * 10,
+                        ParamInt2 = DateTime.Now.Date.Day * 10,
+                        ParamInt1 =  DateTime.Now.Date.Month * 10,
                         ParamInt3 =  DateTime.Now.Date.Year * 100
                     });
                     context.SaveChanges();
