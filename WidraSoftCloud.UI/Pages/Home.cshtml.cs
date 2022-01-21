@@ -46,7 +46,7 @@ namespace WidraSoftCloud.UI.Pages
             }
             else
             {
-                UserMessage = "Licence expirée.";
+                UserMessage = "Licence WidraSoftCloud expirée.";
                 return RedirectToPage("./Licence");                               
             }
 
