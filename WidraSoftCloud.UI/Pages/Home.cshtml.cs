@@ -34,7 +34,7 @@ namespace WidraSoftCloud.UI.Pages
             var context = new WidraSoftCloudUIContext(contextOptions);
             LicenceAccess licenceAccess = new LicenceAccess(context);
 
-            if (licenceAccess.CanUpdateLicence())
+           /* if (licenceAccess.CanUpdateLicence())
                 CanUpdateLicence = true;
             else
                 CanUpdateLicence = false;
@@ -48,9 +48,9 @@ namespace WidraSoftCloud.UI.Pages
             {
                 UserMessage = "Licence WidraSoftCloud expirée.";
                 return RedirectToPage("./Licence");                               
-            }
-            
-        
+            }*/
+            return Page();
+
         }
     }
 }
