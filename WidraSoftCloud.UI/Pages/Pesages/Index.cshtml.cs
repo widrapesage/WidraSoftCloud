@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,8 @@ namespace WidraSoftCloud.UI.Pages.Pesages
         public SelectList Clients { get; set; }
         public SelectList Categories { get; set; }
         public SelectList Provenances { get; set; }
+
+       
         [BindProperty(SupportsGet = true)]
         public String Id { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -50,6 +53,14 @@ namespace WidraSoftCloud.UI.Pages.Pesages
         public string Categorie { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Provenance { get; set; }
+        [BindProperty(SupportsGet = true)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime StartDate { get; set; }
+        [BindProperty(SupportsGet = true)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime EndDate { get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
             IQueryable<string> IdsQuery = from p in _context.Pesage
@@ -79,6 +90,10 @@ namespace WidraSoftCloud.UI.Pages.Pesages
             IQueryable<string> ProvenancesQuery = from p in _context.Pesage
                                                   orderby p.LibelleProvenance
                                                   select p.LibelleProvenance;
+            IQueryable<DateTime> DatesQuery = from p in _context.Pesage
+                                                  orderby p.DateArrivee
+                                                  select p.DateArrivee;
+
 
             var pesages = from p in _context.Pesage
                           select p;
@@ -133,6 +148,10 @@ namespace WidraSoftCloud.UI.Pages.Pesages
                 pesages = pesages.Where(p => p.LibelleProvenance == Provenance);
             }
 
+            if (StartDate != DateTime.MinValue && EndDate != DateTime.MinValue )
+            {
+                pesages = pesages.Where(p => p.DateArrivee >= StartDate).Where(p => p.DateArrivee <= EndDate);
+            }
 
             Ids = new SelectList(await IdsQuery.Distinct().ToListAsync());
             Ponts = new SelectList(await PontsQuery.Distinct().ToListAsync());
@@ -144,6 +163,7 @@ namespace WidraSoftCloud.UI.Pages.Pesages
             Categories = new SelectList(await CategoriesQuery.Distinct().ToListAsync());
             Provenances = new SelectList(await ProvenancesQuery.Distinct().ToListAsync());
             Pesage = await pesages.ToListAsync();
+            
             return @Page();
         }
     }
