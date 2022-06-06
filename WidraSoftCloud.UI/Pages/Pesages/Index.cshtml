@@ -6,7 +6,8 @@
 }
 
 <h1>Pesages</h1>
-
+<br />
+<p>
 <form>
     <p>
         Numéro: <select asp-for="Id" asp-items="Model.Ids">
@@ -21,7 +22,8 @@
         Transporteur: <select asp-for="Transporteur" asp-items="Model.Transporteurs">
             <option value="">Tout</option>
         </select>
-
+    </p>
+    <p>
         Produit: <select asp-for="Produit" asp-items="Model.Produits">
             <option value="">Tout</option>
         </select>
@@ -29,8 +31,7 @@
         Destination: <select asp-for="Destination" asp-items="Model.Destinations">
             <option value="">Tout</option>
         </select>
-    </p>
-    <p>
+
         Client:  <select asp-for="Client" asp-items="Model.Clients">
             <option value="">Tout</option>
         </select>
@@ -38,18 +39,25 @@
         Categorie:  <select asp-for="Categorie" asp-items="Model.Categories">
             <option value="">Tout</option>
         </select>
+    </p>
+    <p>
         Provenance:  <select asp-for="Provenance" asp-items="Model.Provenances">
             <option value="">Tout</option>
         </select>
 
-        <input asp-for="StartDate" />
-        <input asp-for="EndDate" />
+        Filtre Date: <input type="checkbox" asp-for="IsDateFilterChecked" onchange="dateFiltercheckedChanged" name="DateFilter"/>
+                     <input asp-for="StartDate" name="StartDate"/>
+                     <input asp-for="EndDate" name="EndDate"/>
 
 
         <input style="background-color:#0bb963;color:white;border-radius:3px 4px;" type="submit" value="Rechercher" />
     </p>
 
 </form>
+<form method="post" asp-page-handler="Export" style="margin-bottom:2px">
+        <input style="background-color:#0bb963;color:white;border-radius:3px 4px;" type="submit" value="Exporter Excel"  />
+</form>
+</p>
 
 <table class="table">
     <thead>
@@ -133,3 +141,4 @@
 }
     </tbody>
 </table>
+

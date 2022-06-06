@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using ClosedXML.Excel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -52,15 +55,17 @@ namespace WidraSoftCloud.UI.Pages.Pesages
         [BindProperty(SupportsGet = true)]
         public string Categorie { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string Provenance { get; set; }
+        public string Provenance { get; set; } 
         [BindProperty(SupportsGet = true)]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime StartDate { get; set; }
+        public DateTime StartDate { get; set; } = DateTime.Now;
         [BindProperty(SupportsGet = true)]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime EndDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]        
+        public DateTime EndDate { get; set; } = DateTime.Now;
+        [BindProperty(SupportsGet = true)]
+        public bool IsDateFilterChecked { get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
             IQueryable<string> IdsQuery = from p in _context.Pesage
@@ -148,7 +153,7 @@ namespace WidraSoftCloud.UI.Pages.Pesages
                 pesages = pesages.Where(p => p.LibelleProvenance == Provenance);
             }
 
-            if (StartDate != DateTime.MinValue && EndDate != DateTime.MinValue )
+            if (IsDateFilterChecked)
             {
                 pesages = pesages.Where(p => p.DateArrivee >= StartDate).Where(p => p.DateArrivee <= EndDate);
             }
@@ -165,6 +170,41 @@ namespace WidraSoftCloud.UI.Pages.Pesages
             Pesage = await pesages.ToListAsync();
             
             return @Page();
+        }
+
+        public  FileResult OnPostExport()
+        {
+            DataTable dt = new DataTable("Grid");
+            dt.Columns.AddRange(new DataColumn[10] { new DataColumn("SyncId"),
+                                    new DataColumn("UniqueKey"),
+                                    new DataColumn("Id"),
+                                    new DataColumn("LibellePont"), 
+                                    new DataColumn("LibelleCamion"), 
+                                    new DataColumn("LibelleProduit"), 
+                                    new DataColumn("LibelleClient"), 
+                                    new DataColumn("CategorieCam"), 
+                                    new DataColumn("DateArrivee"), 
+                                    new DataColumn("DateSynchronisation")
+                                });
+
+            var pesages = from p in _context.Pesage
+                          select p;
+
+            foreach (var pesage in pesages)
+            {
+                dt.Rows.Add(pesage.SyncId, pesage.UniqueKey, pesage.Id, pesage.LibellePont, pesage.LibelleCamion,
+                         pesage.LibelleProduit, pesage.LibelleClient, pesage.CategorieCam, pesage.DateArrivee, pesage.DateSynchronisation );
+            }
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    return  File(stream.ToArray() , "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "WidraSoftCloud-Pesages.xlsx");
+                }
+            }
         }
     }
 }
