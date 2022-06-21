@@ -193,7 +193,7 @@ namespace WidraSoftCloud.UI.Pages.Pesages
             foreach (var pesage in pesages)
             {
                 dt.Rows.Add(pesage.SyncId, pesage.UniqueKey, pesage.Id, pesage.LibellePont, pesage.LibelleCamion,
-                         pesage.LibelleProduit, pesage.LibelleClient, pesage.CategorieCam, pesage.DateArrivee, pesage.DateSynchronisation );
+                         pesage.LibelleProduit, pesage.LibelleClient, pesage.CategorieCam, pesage.DateArrivee.ToString("dd-MM-yyyy HH:mm:ss"), pesage.DateSynchronisation.ToString("dd-MM-yyyy HH:mm:ss"));
             }
 
             using (XLWorkbook wb = new XLWorkbook())
