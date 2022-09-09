@@ -18,7 +18,7 @@ namespace WidraSoftCloud.UI.Models
         [Display(Name = "Pont")]
         public string LibellePont { get; set; }
         public int CamionId { get; set; }
-        [Display(Name = "Camion")]
+        [Display(Name = "Matricule Tracteur")]
         public string LibelleCamion { get; set; }
         public string Flux { get; set; }
         public int TransporteurId { get; set; }
@@ -47,6 +47,9 @@ namespace WidraSoftCloud.UI.Models
         public int ProvenanceId { get; set; }
         [Display(Name = "Provenance")]
         public string LibelleProvenance { get; set; }
+        public int? RemorqueId { get; set; }
+        [Display(Name = "Matricule Remorque")]
+        public string LibelleRemorque { get; set; }
         [Display(Name = "Date synchronisation")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DateSynchronisation { get; set; }
