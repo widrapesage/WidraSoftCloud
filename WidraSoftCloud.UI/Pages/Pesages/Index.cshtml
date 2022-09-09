@@ -77,11 +77,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Pesage[0].LibelleCamion)
             </th>
-
+            <th>
+                @Html.DisplayNameFor(model => model.Pesage[0].LibelleRemorque)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Pesage[0].LibelleProduit)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.Pesage[0].LibelleClient)
             </th>
@@ -91,7 +92,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Pesage[0].DateArrivee)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.Pesage[0].DateSynchronisation)
             </th>
@@ -116,7 +116,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.LibelleCamion)
             </td>
-
+            <td>
+                @Html.DisplayFor(modelItem => item.LibelleRemorque)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LibelleProduit)
             </td>

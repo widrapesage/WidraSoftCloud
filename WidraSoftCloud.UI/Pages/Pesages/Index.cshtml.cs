@@ -36,6 +36,7 @@ namespace WidraSoftCloud.UI.Pages.Pesages
         public SelectList Clients { get; set; }
         public SelectList Categories { get; set; }
         public SelectList Provenances { get; set; }
+        public SelectList Remorques { get; set; }
 
        
         [BindProperty(SupportsGet = true)]
@@ -55,7 +56,9 @@ namespace WidraSoftCloud.UI.Pages.Pesages
         [BindProperty(SupportsGet = true)]
         public string Categorie { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string Provenance { get; set; } 
+        public string Provenance { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Remorque { get; set; }
         [BindProperty(SupportsGet = true)]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
@@ -95,6 +98,9 @@ namespace WidraSoftCloud.UI.Pages.Pesages
             IQueryable<string> ProvenancesQuery = from p in _context.Pesage
                                                   orderby p.LibelleProvenance
                                                   select p.LibelleProvenance;
+            IQueryable<string> RemorquesQuery = from p in _context.Pesage
+                                                  orderby p.LibelleRemorque
+                                                  select p.LibelleRemorque;
             IQueryable<DateTime> DatesQuery = from p in _context.Pesage
                                                   orderby p.DateArrivee
                                                   select p.DateArrivee;
@@ -153,6 +159,11 @@ namespace WidraSoftCloud.UI.Pages.Pesages
                 pesages = pesages.Where(p => p.LibelleProvenance == Provenance);
             }
 
+            if (!string.IsNullOrEmpty(Remorque))
+            {
+                pesages = pesages.Where(p => p.LibelleRemorque == Remorque);
+            }
+
             if (IsDateFilterChecked)
             {
                 pesages = pesages.Where(p => p.DateArrivee >= StartDate).Where(p => p.DateArrivee <= EndDate);
@@ -167,6 +178,7 @@ namespace WidraSoftCloud.UI.Pages.Pesages
             Clients = new SelectList(await ClientsQuery.Distinct().ToListAsync());
             Categories = new SelectList(await CategoriesQuery.Distinct().ToListAsync());
             Provenances = new SelectList(await ProvenancesQuery.Distinct().ToListAsync());
+            Remorques = new SelectList(await RemorquesQuery.Distinct().ToListAsync());
             Pesage = await pesages.ToListAsync();
             
             return @Page();
