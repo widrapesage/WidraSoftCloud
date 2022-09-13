@@ -187,16 +187,29 @@ namespace WidraSoftCloud.UI.Pages.Pesages
         public  FileResult OnPostExport()
         {
             DataTable dt = new DataTable("Grid");
-            dt.Columns.AddRange(new DataColumn[10] { new DataColumn("SyncId"),
+            dt.Columns.AddRange(new DataColumn[23] { new DataColumn("SyncId"),
                                     new DataColumn("UniqueKey"),
                                     new DataColumn("Id"),
-                                    new DataColumn("LibellePont"), 
-                                    new DataColumn("LibelleCamion"), 
-                                    new DataColumn("LibelleProduit"), 
-                                    new DataColumn("LibelleClient"), 
-                                    new DataColumn("CategorieCam"), 
-                                    new DataColumn("DateArrivee"), 
-                                    new DataColumn("DateSynchronisation")
+                                    new DataColumn("Pont"), 
+                                    new DataColumn("Flux"), 
+                                    new DataColumn("Tracteur"), 
+                                    new DataColumn("Remorque"), 
+                                    new DataColumn("Transporteur"), 
+                                    new DataColumn("Provenance"), 
+                                    new DataColumn("Destination"),
+                                    new DataColumn("Produit"),
+                                    new DataColumn("Client"),
+                                    new DataColumn("Categorie"),
+                                    new DataColumn("DatePesee"),
+                                    new DataColumn("Rang1"),
+                                    new DataColumn("Charge1"),
+                                    new DataColumn("Rang2"),
+                                    new DataColumn("Charge2"),
+                                    new DataColumn("Rang3"),
+                                    new DataColumn("Charge3"),
+                                    new DataColumn("Rang4"),
+                                    new DataColumn("Charge4"),
+                                    new DataColumn("DateSynchronisation"),
                                 });
 
             var pesages = from p in _context.Pesage join pc in _context.PesageControle on p.Id equals pc.Id
