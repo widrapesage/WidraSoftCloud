@@ -199,13 +199,15 @@ namespace WidraSoftCloud.UI.Pages.Pesages
                                     new DataColumn("DateSynchronisation")
                                 });
 
-            var pesages = from p in _context.Pesage
-                          select p;
+            var pesages = from p in _context.Pesage join pc in _context.PesageControle on p.Id equals pc.Id
+                          select new { p, pc };
 
             foreach (var pesage in pesages)
             {
-                dt.Rows.Add(pesage.SyncId, pesage.UniqueKey, pesage.Id, pesage.LibellePont, pesage.LibelleCamion,
-                         pesage.LibelleProduit, pesage.LibelleClient, pesage.CategorieCam, pesage.DateArrivee.ToString("dd-MM-yyyy HH:mm:ss"), pesage.DateSynchronisation.ToString("dd-MM-yyyy HH:mm:ss"));
+                dt.Rows.Add(pesage.p.SyncId, pesage.p.UniqueKey, pesage.p.Id, pesage.p.LibellePont, pesage.p.Flux,pesage.p.LibelleCamion, pesage.p.LibelleRemorque, pesage.p.LibelleTransporteur, pesage.p.LibelleProvenance, pesage.p.LibelleDestination,
+                         pesage.p.LibelleProduit, pesage.p.LibelleClient, pesage.p.CategorieCam, pesage.p.DateArrivee.ToString("dd-MM-yyyy HH:mm:ss"), pesage.pc.Rang1, pesage.pc.Poids1, pesage.pc.Rang2, 
+                         pesage.pc.Poids2, pesage.pc.Rang3, pesage.pc.Poids3, pesage.pc.Rang4, pesage.pc.Poids4, pesage.p.DateSynchronisation.ToString("dd-MM-yyyy HH:mm:ss"));
+
             }
 
             using (XLWorkbook wb = new XLWorkbook())
