@@ -215,6 +215,62 @@ namespace WidraSoftCloud.UI.Pages.Pesages
             var pesages = from p in _context.Pesage join pc in _context.PesageControle on p.Id equals pc.Id
                           select new { p, pc };
 
+            if (!string.IsNullOrEmpty(Id))
+            {
+                pesages = pesages.Where(p => p.p.UniqueKey == Id);
+            }
+
+            if (!string.IsNullOrEmpty(Pont))
+            {
+                pesages = pesages.Where(p => p.p.SyncId == Pont);
+            }
+
+            if (!string.IsNullOrEmpty(Camion))
+            {
+                pesages = pesages.Where(p => p.p.LibelleCamion == Camion);
+            }
+
+            if (!string.IsNullOrEmpty(Transporteur))
+            {
+                pesages = pesages.Where(p => p.p.LibelleTransporteur == Transporteur);
+            }
+
+            if (!string.IsNullOrEmpty(Produit))
+            {
+                pesages = pesages.Where(p => p.p.LibelleProduit == Produit);
+            }
+
+            if (!string.IsNullOrEmpty(Destination))
+            {
+                pesages = pesages.Where(p => p.p.LibelleDestination == Destination);
+            }
+
+            if (!string.IsNullOrEmpty(Client))
+            {
+                pesages = pesages.Where(p => p.p.LibelleClient == Client);
+            }
+
+            if (!string.IsNullOrEmpty(Categorie))
+            {
+                pesages = pesages.Where(p => p.p.CategorieCam == Categorie);
+            }
+
+            if (!string.IsNullOrEmpty(Provenance))
+            {
+                pesages = pesages.Where(p => p.p.LibelleProvenance == Provenance);
+            }
+
+            if (!string.IsNullOrEmpty(Remorque))
+            {
+                pesages = pesages.Where(p => p.p.LibelleRemorque == Remorque);
+            }
+
+            if (IsDateFilterChecked)
+            {
+                pesages = pesages.Where(p => p.p.DateArrivee >= StartDate).Where(p => p.p.DateArrivee <= EndDate);
+            }
+
+
             foreach (var pesage in pesages)
             {
                 dt.Rows.Add(pesage.p.SyncId, pesage.p.UniqueKey, pesage.p.Id, pesage.p.LibellePont, pesage.p.Flux,pesage.p.LibelleCamion, pesage.p.LibelleRemorque, pesage.p.LibelleTransporteur, pesage.p.LibelleProvenance, pesage.p.LibelleDestination,
