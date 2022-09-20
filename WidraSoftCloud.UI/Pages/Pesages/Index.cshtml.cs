@@ -24,7 +24,6 @@ namespace WidraSoftCloud.UI.Pages.Pesages
             _context = context;
         }
 
-
         public IList<Pesage> Pesage { get;set; }
         
         public SelectList Ids { get; set; }
@@ -179,17 +178,19 @@ namespace WidraSoftCloud.UI.Pages.Pesages
             Categories = new SelectList(await CategoriesQuery.Distinct().ToListAsync());
             Provenances = new SelectList(await ProvenancesQuery.Distinct().ToListAsync());
             Remorques = new SelectList(await RemorquesQuery.Distinct().ToListAsync());
+
+
             Pesage = await pesages.ToListAsync();
             
             return @Page();
         }
 
-        public  FileResult OnPostExport()
+        public FileResult OnPostExport()
         {
             DataTable dt = new DataTable("Grid");
             dt.Columns.AddRange(new DataColumn[23] { new DataColumn("SyncId"),
                                     new DataColumn("UniqueKey"),
-                                    new DataColumn("Id"),
+                                    new DataColumn("Id", typeof(Int32)),
                                     new DataColumn("Pont"), 
                                     new DataColumn("Flux"), 
                                     new DataColumn("Tracteur"), 
@@ -200,16 +201,16 @@ namespace WidraSoftCloud.UI.Pages.Pesages
                                     new DataColumn("Produit"),
                                     new DataColumn("Client"),
                                     new DataColumn("Categorie"),
-                                    new DataColumn("DatePesee"),
+                                    new DataColumn("DatePesee", typeof(DateTime)),
                                     new DataColumn("Rang1"),
-                                    new DataColumn("Charge1"),
+                                    new DataColumn("Charge1", typeof(Int32)),
                                     new DataColumn("Rang2"),
-                                    new DataColumn("Charge2"),
+                                    new DataColumn("Charge2", typeof(Int32)),
                                     new DataColumn("Rang3"),
-                                    new DataColumn("Charge3"),
+                                    new DataColumn("Charge3", typeof(Int32)),
                                     new DataColumn("Rang4"),
-                                    new DataColumn("Charge4"),
-                                    new DataColumn("DateSynchronisation"),
+                                    new DataColumn("Charge4", typeof(Int32)),
+                                    new DataColumn("DateSynchronisation", typeof(DateTime)),
                                 });
 
             var pesages = from p in _context.Pesage join pc in _context.PesageControle on p.Id equals pc.Id
@@ -270,12 +271,12 @@ namespace WidraSoftCloud.UI.Pages.Pesages
                 pesages = pesages.Where(p => p.p.DateArrivee >= StartDate).Where(p => p.p.DateArrivee <= EndDate);
             }
 
-
+         
             foreach (var pesage in pesages)
             {
                 dt.Rows.Add(pesage.p.SyncId, pesage.p.UniqueKey, pesage.p.Id, pesage.p.LibellePont, pesage.p.Flux,pesage.p.LibelleCamion, pesage.p.LibelleRemorque, pesage.p.LibelleTransporteur, pesage.p.LibelleProvenance, pesage.p.LibelleDestination,
-                         pesage.p.LibelleProduit, pesage.p.LibelleClient, pesage.p.CategorieCam, pesage.p.DateArrivee.ToString("dd-MM-yyyy HH:mm:ss"), pesage.pc.Rang1, pesage.pc.Poids1, pesage.pc.Rang2, 
-                         pesage.pc.Poids2, pesage.pc.Rang3, pesage.pc.Poids3, pesage.pc.Rang4, pesage.pc.Poids4, pesage.p.DateSynchronisation.ToString("dd-MM-yyyy HH:mm:ss"));
+                         pesage.p.LibelleProduit, pesage.p.LibelleClient, pesage.p.CategorieCam, pesage.p.DateArrivee, pesage.pc.Rang1, pesage.pc.Poids1, pesage.pc.Rang2, 
+                         pesage.pc.Poids2, pesage.pc.Rang3, pesage.pc.Poids3, pesage.pc.Rang4, pesage.pc.Poids4, pesage.p.DateSynchronisation);
 
             }
 

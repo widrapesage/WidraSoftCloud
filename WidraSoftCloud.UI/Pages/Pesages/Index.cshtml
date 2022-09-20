@@ -56,10 +56,23 @@
         <input style="background-color:#0bb963;color:white;border-radius:3px 4px;" type="submit" value="Rechercher" />
     </p>
 
+
 </form>
-<form method="post" asp-page-handler="Export" style="margin-bottom:2px">
+    <form method="post" asp-page-handler="Export" style="margin-bottom:2px">
+                     <input type="checkbox"  asp-for="IsDateFilterChecked" hidden="true" />
+                     <input asp-for="StartDate" name="StartDate" hidden="true"/>
+                     <input asp-for="EndDate" name="EndDate" hidden="true" />
+                     <input asp-for="Pont" name="Pont" hidden="true" />
+                     <input asp-for="Camion" name="Camion" hidden="true" />
+                     <input asp-for="Remorque" name="Remorque" hidden="true" />
+                     <input asp-for="Transporteur" name="Transporteur" hidden="true" />
+                     <input asp-for="Produit" name="Produit" hidden="true" />
+                     <input asp-for="Destination" name="Destination" hidden="true" />
+                     <input asp-for="Client" name="Client" hidden="true" />
+                     <input asp-for="Categorie" name="Categorie" hidden="true" />
+                     <input asp-for="Provenance" name="Provenance" hidden="true" />
         <input style="background-color:#0bb963;color:white;border-radius:3px 4px;" type="submit" value="Exporter Excel"  />
-</form>
+    </form>
 </p>
 
 <table class="table">
