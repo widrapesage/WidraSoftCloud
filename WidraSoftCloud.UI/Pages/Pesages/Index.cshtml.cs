@@ -188,7 +188,7 @@ namespace WidraSoftCloud.UI.Pages.Pesages
         public FileResult OnPostExport()
         {
             DataTable dt = new DataTable("Grid");
-            dt.Columns.AddRange(new DataColumn[23] { new DataColumn("SyncId"),
+            dt.Columns.AddRange(new DataColumn[27] { new DataColumn("SyncId"),
                                     new DataColumn("UniqueKey"),
                                     new DataColumn("Id", typeof(Int32)),
                                     new DataColumn("Pont"), 
@@ -204,12 +204,16 @@ namespace WidraSoftCloud.UI.Pages.Pesages
                                     new DataColumn("DatePesee", typeof(DateTime)),
                                     new DataColumn("Rang1"),
                                     new DataColumn("Charge1", typeof(Int32)),
+                                    new DataColumn("Surcharge1", typeof(Int32)),
                                     new DataColumn("Rang2"),
                                     new DataColumn("Charge2", typeof(Int32)),
+                                    new DataColumn("Surcharge2", typeof(Int32)),
                                     new DataColumn("Rang3"),
                                     new DataColumn("Charge3", typeof(Int32)),
+                                    new DataColumn("Surcharge3", typeof(Int32)),
                                     new DataColumn("Rang4"),
                                     new DataColumn("Charge4", typeof(Int32)),
+                                    new DataColumn("Surcharge4", typeof(Int32)),
                                     new DataColumn("DateSynchronisation", typeof(DateTime)),
                                 });
 
@@ -275,8 +279,8 @@ namespace WidraSoftCloud.UI.Pages.Pesages
             foreach (var pesage in pesages)
             {
                 dt.Rows.Add(pesage.p.SyncId, pesage.p.UniqueKey, pesage.p.Id, pesage.p.LibellePont, pesage.p.Flux,pesage.p.LibelleCamion, pesage.p.LibelleRemorque, pesage.p.LibelleTransporteur, pesage.p.LibelleProvenance, pesage.p.LibelleDestination,
-                         pesage.p.LibelleProduit, pesage.p.LibelleClient, pesage.p.CategorieCam, pesage.p.DateArrivee, pesage.pc.Rang1, pesage.pc.Poids1, pesage.pc.Rang2, 
-                         pesage.pc.Poids2, pesage.pc.Rang3, pesage.pc.Poids3, pesage.pc.Rang4, pesage.pc.Poids4, pesage.p.DateSynchronisation);
+                         pesage.p.LibelleProduit, pesage.p.LibelleClient, pesage.p.CategorieCam, pesage.p.DateArrivee, pesage.pc.Rang1, pesage.pc.Poids1, pesage.pc.Surcharge1,pesage.pc.Rang2, 
+                         pesage.pc.Poids2, pesage.pc.Surcharge2, pesage.pc.Rang3, pesage.pc.Poids3, pesage.pc.Surcharge3, pesage.pc.Rang4, pesage.pc.Poids4, pesage.pc.Surcharge4, pesage.p.DateSynchronisation);
 
             }
 
