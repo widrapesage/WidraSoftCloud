@@ -68,6 +68,15 @@ namespace WidraSoftCloud.UI.Pages.Pesages
         public DateTime EndDate { get; set; } = DateTime.Now;
         [BindProperty(SupportsGet = true)]
         public bool IsDateFilterChecked { get; set; }
+
+
+        private int fn_Surcharge(Int32 weight)
+        {
+            if (weight < 0)
+                return 0;
+            else
+                return weight;
+        }
         public async Task<IActionResult> OnGetAsync()
         {
             IQueryable<string> IdsQuery = from p in _context.Pesage
@@ -188,7 +197,7 @@ namespace WidraSoftCloud.UI.Pages.Pesages
         public FileResult OnPostExport()
         {
             DataTable dt = new DataTable("Grid");
-            dt.Columns.AddRange(new DataColumn[27] { new DataColumn("SyncId"),
+            dt.Columns.AddRange(new DataColumn[30] { new DataColumn("SyncId"),
                                     new DataColumn("UniqueKey"),
                                     new DataColumn("Id", typeof(Int32)),
                                     new DataColumn("Pont"), 
@@ -200,24 +209,27 @@ namespace WidraSoftCloud.UI.Pages.Pesages
                                     new DataColumn("Destination"),
                                     new DataColumn("Produit"),
                                     new DataColumn("Client"),
-                                    new DataColumn("Categorie"),
+                                    new DataColumn("Silhouette"),
+                                    new DataColumn("Poids Max", typeof(Int32)),
                                     new DataColumn("DatePesee", typeof(DateTime)),
-                                    new DataColumn("Rang1"),
-                                    new DataColumn("Charge1", typeof(Int32)),
-                                    new DataColumn("Surcharge1", typeof(Int32)),
-                                    new DataColumn("Rang2"),
-                                    new DataColumn("Charge2", typeof(Int32)),
-                                    new DataColumn("Surcharge2", typeof(Int32)),
-                                    new DataColumn("Rang3"),
-                                    new DataColumn("Charge3", typeof(Int32)),
-                                    new DataColumn("Surcharge3", typeof(Int32)),
-                                    new DataColumn("Rang4"),
-                                    new DataColumn("Charge4", typeof(Int32)),
-                                    new DataColumn("Surcharge4", typeof(Int32)),
+                                    new DataColumn("PTAC", typeof(Int32)),
+                                    new DataColumn("Surcharge PTAC", typeof(Int32)),
+                                    new DataColumn("Essieu 1"),
+                                    new DataColumn("Charge Essieu 1", typeof(Int32)),
+                                    new DataColumn("Surcharge Essieu 1", typeof(Int32)),
+                                    new DataColumn("Essieu 2"),
+                                    new DataColumn("Charge Essieu 2", typeof(Int32)),
+                                    new DataColumn("Surcharge Essieu 2", typeof(Int32)),
+                                    new DataColumn("Essieu 3"),
+                                    new DataColumn("Charge Essieu 3", typeof(Int32)),
+                                    new DataColumn("Surcharge Essieu 3", typeof(Int32)),
+                                    new DataColumn("Essieu 4"),
+                                    new DataColumn("Charge Essieu 4", typeof(Int32)),
+                                    new DataColumn("Surcharge Essieu 4", typeof(Int32)),
                                     new DataColumn("DateSynchronisation", typeof(DateTime)),
                                 });
 
-            var pesages = from p in _context.Pesage join pc in _context.PesageControle on p.Id equals pc.Id
+            var pesages = from p in _context.Pesage join pc in _context.PesageControle on p.UniqueKey equals pc.UniqueKey
                           select new { p, pc };
 
             if (!string.IsNullOrEmpty(Id))
@@ -279,7 +291,7 @@ namespace WidraSoftCloud.UI.Pages.Pesages
             foreach (var pesage in pesages)
             {
                 dt.Rows.Add(pesage.p.SyncId, pesage.p.UniqueKey, pesage.p.Id, pesage.p.LibellePont, pesage.p.Flux,pesage.p.LibelleCamion, pesage.p.LibelleRemorque, pesage.p.LibelleTransporteur, pesage.p.LibelleProvenance, pesage.p.LibelleDestination,
-                         pesage.p.LibelleProduit, pesage.p.LibelleClient, pesage.p.CategorieCam, pesage.p.DateArrivee, pesage.pc.Rang1, pesage.pc.Poids1, pesage.pc.Surcharge1,pesage.pc.Rang2, 
+                         pesage.p.LibelleProduit, pesage.p.LibelleClient, pesage.p.CategorieCam, pesage.pc.PoidsTotalMaxAut, pesage.p.DateArrivee, pesage.p.PoidsNet, fn_Surcharge(pesage.p.PoidsNet - pesage.pc.PoidsTotalMaxAut),pesage.pc.Rang1, pesage.pc.Poids1, pesage.pc.Surcharge1,pesage.pc.Rang2, 
                          pesage.pc.Poids2, pesage.pc.Surcharge2, pesage.pc.Rang3, pesage.pc.Poids3, pesage.pc.Surcharge3, pesage.pc.Rang4, pesage.pc.Poids4, pesage.pc.Surcharge4, pesage.p.DateSynchronisation);
 
             }
